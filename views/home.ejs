@@ -1,0 +1,38 @@
+<html>
+ <head>
+  <title>
+      <%= locals.title %>
+  </title>
+   <script src="https://kit.fontawesome.com/46f6e0ce36.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/home.css">
+  <body>
+    <div style=" width: 60%; margin: auto;"> 
+     <h1 id="page-heading"><i class="fas fa-address-book"></i> My Contact List</h1>
+     <div id="contacts-list-container">
+        <ul style="padding: 0;">
+            <%
+            for(let i of contact_list){%>
+                <li class="contact">
+                    <div class="details">
+                    <p><%= i.name %></p>
+                    <p><%= i.phone %></p>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/?id=<%= i._id %>">
+                            <i class="fas fa-window-close"></i>
+                        </a>
+                    </div>
+                </li><%} %>
+        </ul>
+    </div>
+      <form id="new-contact-form" action="/create-contact" method="POST">
+        <input class="in input" type="text" name="name" placeholder="enter name" required >
+        <input class="in input" type="text" name="phone" placeholder="enter phone" required>
+        <button class="in" type="submit">Add contact</button>
+      </form>
+    
+</div>
+      <script type="text/javascript" src="/js/home.js"></script>
+  </body>
+ </head>
+</html>
